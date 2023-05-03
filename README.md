@@ -19,9 +19,37 @@ POST `/api/v1.0/user/create`
 - Request body: `{"firstName": string,"lastName":string,"email":string,"password":string}`.
 - Response: `{"message":string,"token":string}`.
 
-To use this project, follow these steps:
+POST `/api/v1.0/user/login`
 
-- Clone this repository to your local machine using git clone https://github.com/Tobbs101/bera-test.git.
-- Navigate to the project directory with cd book-gallery.
-- Install dependencies using `npm install`.
-- Start the development server using `npm start`.
+- Logs in a user.
+- Request body: `{"email":string,"password":string}`.
+- Response: `{"message":string,"token":string}`.
+
+### Products
+
+GET `/api/v1.0/product/all`
+
+- Retrieves all products.
+- Response: `[{"id":number,"productName":string,"productDescription":string,"productPrice":number,"productAvailable":boolean,"createdAt": date, "updatedAt": date}]`.
+
+GET `/api/v1.0/product/:id`
+
+- Retrieves a single product by ID.
+- Response: `[{"id":number,"productName":string,"productDescription":string,"productPrice":number,"productAvailable":boolean,"createdAt": date, "updatedAt": date}]`.
+
+POST `/api/v1.0/product`
+
+- Createsa a new product.
+- Request body: `[{"id":number,"productName":string,"productDescription":string,"productPrice":number,"productAvailable":boolean}]`.
+- Response: `{ "message": string, "product": { "id":number,"productName":string,"productDescription":string,"productPrice":number,"productAvailable":boolean, "createdAt": date, "updatedAt": date } }`.
+
+PUT `/api/v1.0/product/:id`
+
+- Updates a product by ID.
+- Request body: `[{"id":number,"productName":string,"productDescription":string,"productPrice":number,"productAvailable":boolean}]`.
+- Response: `{ "message": string, "product": { "id":number,"productName":string,"productDescription":string,"productPrice":number,"productAvailable":boolean, "createdAt": date, "updatedAt": date } }`.
+
+DELETE `/api/v1.0/product/:id`
+
+- Deletes a product by ID.
+- Response: `{"message":string}`.
