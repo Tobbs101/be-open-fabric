@@ -1,13 +1,10 @@
+require("dotenv").config();
+
 module.exports = {
-  HOST: "localhost",
-  USER: "root",
-  PASSWORD: "",
-  DB: "open-fabric",
-  dialect: "mysql",
-  pool: {
-    max: 5,
-    min: 0,
-    acquire: 30000,
-    idle: 10000,
-  },
+  database: "open_fabric",
+  host: process.env.DB_PROD_HOST,
+  username: process.env.DB_PROD_USER,
+  password: process.env.DB_PROD_PASS,
+  url: process.env.DB_PROD_URL,
+  dialect: "postgres",
 };
