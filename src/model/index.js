@@ -1,11 +1,5 @@
 const dbConfig = require("../db/database");
 const Sequelize = require("sequelize");
-// const sequelize = new Sequelize(
-//   dbConfig.database,
-//   dbConfig.username,
-//   dbConfig.password,
-//   dbConfig
-// );
 const sequelize = new Sequelize(dbConfig.url);
 const db = {};
 db.Sequelize = Sequelize;
