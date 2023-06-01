@@ -23,16 +23,34 @@ exports.create = (req, res) => {
     password: req.body.password,
   };
   // Save User in the database
-  User.create(user)
-    .then((data) => {
-      res.send(data);
+  User.findOne({ email: user.email })
+    .then((existingUser) => {
+      if (existingUser) {
+        // User already exists
+        res.status(409).send({ message: "User already exists." });
+      } else {
+        // Create the user
+        User.create(user)
+          .then((data) => {
+            res.send(data);
+          })
+          .catch((err) => {
+            res.status(500).send({
+              message:
+                err.message || "Some error occurred while creating the User.",
+            });
+          });
+      }
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occurred while creating the User.",
+        message:
+          err.message ||
+          "Some error occurred while checking for existing User.",
       });
     });
 };
+
 // Retrieve all Users from the database.
 exports.findAll = (req, res) => {
   const email = req.query.email;
