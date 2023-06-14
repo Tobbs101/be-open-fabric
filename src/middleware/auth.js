@@ -24,11 +24,11 @@ const auth = async (req, res, next) => {
         next();
       })
       .catch((err) => {
-        return res.status(401).send({ error: "Please Autheticate" });
+        return res.status(401).send({ error: "Please Authenticate" });
       });
   } catch (e) {
     console.log(e);
-    return res.status(401).send({ error: "Please Autheticate" });
+    return res.status(401).send({ error: "Please Authenticate" });
   }
 };
 
